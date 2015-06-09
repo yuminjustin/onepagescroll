@@ -11,15 +11,22 @@
         
 ###添加滚动标记的方法（以test.html为例）
 接着上方【1】滚动回调：<br/>
+
         $("#contorl .on").removeClass("on");
         $("#contorl span").eq(o.index).addClass("on");
+        
 滚动之后的返回值o（名字自定义），数据内容：<br/>
+
         index: 当前窗口的角标
         viewbox: 当前窗口的jq对象
+        
 注：窗口内部的子元素需要点击或其他事件，例如a的超链接，请在回调中写入禁止冒泡
 
 ###外部手动滚动的方法（以test.html为例）
 利用右侧的标记，为其绑定click事件<br/>
+
         $("#contorl span").click(function(){
             onepage.change($(this).index());  //调用返回值的change方法 传入当前需要被切换的窗口角标
         });
+
+        
