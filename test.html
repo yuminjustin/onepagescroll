@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, scalable=no" id="viewport" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+        
+        #box div:nth-of-type(1) {
+            background: #16f58e
+        }
+        
+        #box div:nth-of-type(2) {
+            background: #1c86b5
+        }
+        
+        #box div:nth-of-type(3) {
+            background: #91bc1e
+        }
+        
+        #box div:nth-of-type(4) {
+            background: #ea17c1
+        }
+        
+        #contorl {
+            height: 200px;
+            width: 40px;
+            right: 0;
+            top: 50%;
+            margin-top: -100px;
+            z-index: 9;
+            position: fixed;
+        }
+        
+        #contorl span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a08c8c;
+            margin: 15px 10px;
+            cursor: pointer;
+        }
+        
+        #contorl span.on {
+            background: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div>
+            <br/>
+            <br/>
+            <br/>
+            <a href="#" onclick="alert(1);">111111</a>
+        </div>
+        <div>2</div>
+        <div>3</div>
+        <div>7</div>
+    </div>
+    <div id="contorl" class="px">
+        <span class="db on"></span>
+        <span class="db"></span>
+        <span class="db"></span>
+        <span class="db"></span>
+    </div>
+    <script src="jquery-min.js"></script>
+    <script src="jquery.onepagescroll.min.js"></script>
+    <script>
+        var onepage = $("#box").onepagescroll({
+            box: "div",   //窗口选择器
+            cycle: 0  //是否循环
+        }, function (o) {//添加的右侧游标
+            $("#contorl .on").removeClass("on");
+            $("#contorl span").eq(o.index).addClass("on");
+        });
+        $("#contorl span").click(function(){  //利用右侧游标去手动切换
+            onepage.change($(this).index());
+        });
+    </script>
+</body>
+
+</html>
