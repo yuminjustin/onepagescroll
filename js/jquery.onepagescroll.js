@@ -8,21 +8,21 @@
             previndex = -1,
             touch = {},
             originalOpts = {
-                disance: 100,//滑动距离
-                cycle: 1,//是否循环滚 IE9以下不支持
-                animationTime: 0.8//滚动持续时间
+                disance: 100, //滑动距离
+                cycle: 1, //是否循环滚 IE9以下不支持
+                animationTime: 0.8 //滚动持续时间
             },
             step,
             milieu,
             transitable = 1,
             outsider = {
                 index: index, //外部手动切换 当前页面角标
-                viewbox: box.eq(index),//当前窗口
-                change: change//手动操作方法 需要传入要切换窗口的角标
+                viewbox: box.eq(index), //当前窗口
+                change: change //手动操作方法 需要传入要切换窗口的角标
             };
         opts = $.extend(originalOpts, opts);
 
-        function events() {//事件绑定
+        function events() { //事件绑定
             if (!milieu[0]) {
                 slef.on("touchstart", function (e) {
                     e.preventDefault();
@@ -55,8 +55,8 @@
                 });
             }
 
-            $(window).on("resize", function () {//窗口改变
-                step = slef.height();
+            $(window).on("resize", function () { //窗口改变
+                step = window.innerHeight;
                 slef.css({
                     "transform": "translateY(" + -index * step + ")",
                     "-moz-transform": "translateY(" + -index * step + ")",
@@ -65,7 +65,7 @@
             })
         }
 
-        function scroll(p, j, o) {//滚动的运算
+        function scroll(p, j, o) { //滚动的运算
             var move = 0,
                 noncycle = !1,
                 animate = function (obj, move) {
@@ -142,7 +142,7 @@
                 });
         }
 
-        function init() {//初始化
+        function init() { //初始化
             milieu = miniMilieuTest();
             $("html,body").css({
                 "overflow": "hidden",
@@ -179,7 +179,7 @@
                     $(this).css("z-index", (num - i));
                 });
             }
-            step = slef.height();
+            step = window.innerHeight;
             events();
         }
 
@@ -199,7 +199,7 @@
             return re;
         }
 
-        function supportCss3() {//判断是否支持css3的transition
+        function supportCss3() { //判断是否支持css3的transition
             var prefix = ['webkit', 'Moz', 'ms', 'o'],
                 i,
                 humpString = [],
