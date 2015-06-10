@@ -1,4 +1,7 @@
 基于jQuery的整屏切换效果，支持chrome，firfox，IE（6-new）；
+
+###update2015/6/10修移动端复step异常
+
 ###配制方法（以test.html为例）
         var onepage = $("#box").onepagescroll({
             box: "div",                      //窗口选择器 jq选择器 
