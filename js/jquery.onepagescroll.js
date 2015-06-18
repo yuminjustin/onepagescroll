@@ -69,6 +69,7 @@
             var move = 0,
                 noncycle = !1,
                 animate = function (obj, move) {
+					if(move!=0) move = "-100%";
                     obj.animate({
                         "top": move
                     }, opts.animationTime * 1000, function () {
