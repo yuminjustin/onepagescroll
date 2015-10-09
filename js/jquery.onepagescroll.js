@@ -58,6 +58,10 @@
 					}
 				});
 			}
+			
+			$(window).on("touchstart", function (e) {
+				//ios修复
+			})
 
 			$(window).on("resize", function () { //窗口改变
 				step = window.innerHeight;
@@ -111,6 +115,7 @@
 				else transitable = !0;
 				transitionEnd(slef[0], function () {
 					transitable = !0;
+					$("#ddd").text("qwrqwe:" + transitable);
 				});
 			} else {
 				var sub;
