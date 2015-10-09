@@ -1,5 +1,5 @@
 (function ($) {
-	$.fn.onepagescroll = function (opts, callback) {
+	$.fn.onepagescroll = function (opts, callback) { //Ignore
 		if (!opts) return false;
 		var slef = this,
 			box = $(opts.box, slef),
@@ -25,9 +25,10 @@
 		function events() { //事件绑定
 			if (!milieu[0]) {
 				slef.on("touchstart", function (e) {
-					e.preventDefault();
-					e.stopPropagation();
-					touch.sy = e.originalEvent.touches[0].pageY;
+					if (e.srcElement.nodeName != "A") {
+						e.preventDefault();
+						touch.sy = e.originalEvent.touches[0].pageY;
+					}
 				});
 				slef.on("touchmove", function (e) {
 					var tempY = e.originalEvent.touches[0].pageY,
@@ -39,7 +40,7 @@
 					if (Math.abs(touch.distance) > opts.disance) {
 						if (touch.distance > 0) scroll(0);
 						else scroll(1);
-					} else return false;
+					}
 				});
 			} else {
 				//pc 鼠标滚轴
