@@ -2,93 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, scalable=no" id="viewport" />
-    <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        html,
-        body {
-            height: 100%;
-        }
-        
-        #box div:nth-of-type(1) {
-            background: #16f58e
-        }
-        
-        #box div:nth-of-type(2) {
-            background: #1c86b5
-        }
-        
-        #box div:nth-of-type(3) {
-            background: #91bc1e
-        }
-        
-        #box div:nth-of-type(4) {
-            background: #ea17c1
-        }
-        
-        #contorl {
-            height: 200px;
-            width: 40px;
-            right: 0;
-            top: 50%;
-            margin-top: -100px;
-            z-index: 9;
-            position: fixed;
-        }
-        
-        #contorl span {
-            display: block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #a08c8c;
-            margin: 15px 10px;
-            cursor: pointer;
-        }
-        
-        #contorl span.on {
-            background: #000000;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, scalable=no" id="viewport" />
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		html,
+		body {
+			height: 100%;
+		}
+		
+		#box>div {
+			overflow: hidden;
+		}
+		
+		#box>div:nth-of-type(1) {
+			background: #16f58e
+		}
+		
+		#box>div:nth-of-type(2) {
+			background: #1c86b5
+		}
+		
+		#box>div:nth-of-type(3) {
+			background: #91bc1e
+		}
+		
+		#box>div:nth-of-type(4) {
+			background: #ea17c1
+		}
+		
+		#contorl {
+			height: 200px;
+			width: 40px;
+			right: 0;
+			top: 50%;
+			margin-top: -100px;
+			z-index: 9;
+			position: fixed;
+		}
+		
+		#contorl span {
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #a08c8c;
+			margin: 15px 10px;
+			cursor: pointer;
+		}
+		
+		#contorl span.on {
+			background: #000000;
+		}
+		
+		.test {
+			background-color: #ccc;
+			width: 80%;
+			height: 60%;
+			margin: 28px auto;
+		}
+	</style>
 </head>
 
 <body>
-    <div id="box">
-        <div>
-            <br/>
-            <br/>
-            <br/>
-            <a href="#" onclick="alert(1);">111111</a>
-        </div>
-        <div>2</div>
-        <div>3</div>
-        <div>7</div>
-    </div>
-    <div id="contorl" class="px">
-        <span class="db on"></span>
-        <span class="db"></span>
-        <span class="db"></span>
-        <span class="db"></span>
-    </div>
-    <script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="./js/jquery.onepagescroll.min.js"></script>
-    <script>
-        var onepage = $("#box").onepagescroll({
-            box: "div",   //窗口选择器
-            cycle: 0  //是否循环
-        }, function (o) {//添加的右侧游标
-            $("#contorl .on").removeClass("on");
-            $("#contorl span").eq(o.index).addClass("on");
-        });
-        $("#contorl span").click(function(){  //利用右侧游标去手动切换
-            onepage.change($(this).index());
-        });
-    </script>
+	<div id="box">
+		<div class="box">
+			<br/>
+			<br/>
+			<br/>
+			<a href="#" onclick="alert(1);">111111</a>
+			<br><br><br>
+			<span onclick="alert(2);">222222</span>
+		</div>
+		<div class="box">
+			<div class="test">非例外</div>
+		</div>
+		<div class="box">
+		  <div class="test" id="test2" onclick="alert(333);">例外 id</div>
+		</div>
+		<div class="box">
+		   <div class="test test3" onclick="alert(44444);">例外 class<br/>a元素默认为例外</div>
+		</div>
+	</div>
+	<div id="contorl" class="px">
+		<span class="db on"></span>
+		<span class="db"></span>
+		<span class="db"></span>
+		<span class="db"></span>
+	</div>
+	<script src="jquery-min.js"></script>
+	<script src="jquery.onepagescroll.js?v=sdgfsdgdfsh"></script>
+	<script>
+		var onepage = $("#box").onepagescroll({
+			box: ".box",
+			cycle: 0,
+			exception:["SPAN","test2","test3"] //例外
+		}, function(o) {
+			$("#contorl .on").removeClass("on");
+			$("#contorl span").eq(o.index).addClass("on");
+		});
+		$("#contorl span").click(function() {
+			onepage.change($(this).index());
+		});
+	</script>
 </body>
 
 </html>
