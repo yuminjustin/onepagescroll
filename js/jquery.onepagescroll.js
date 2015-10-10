@@ -40,6 +40,7 @@
 					if (Math.abs(touch.distance) > opts.disance) {
 						if (touch.distance > 0) scroll(0);
 						else scroll(1);
+						touch.distance = 0
 					}
 				});
 			} else {
