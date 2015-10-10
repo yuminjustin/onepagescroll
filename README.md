@@ -1,8 +1,10 @@
 基于jQuery的整屏切换效果，支持chrome，firfox，IE（6-new）；
 
-###update2015/6/18  IE8,7滚动距离无法取值；
+#update2015/10/10 修复ios上下拖拽；
 
-###update2015/6/10  修移动端复step异常；
+#update2015/6/18  IE8,7滚动距离无法取值；
+
+#update2015/6/10  修移动端复step异常；
 
 ###配制方法（以test.html为例）
         var onepage = $("#box").onepagescroll({
