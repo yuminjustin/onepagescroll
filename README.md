@@ -1,6 +1,6 @@
 基于jQuery的整屏切换效果，支持chrome，firfox，IE（6-new）；
 
-update2015/10/10 修复ios上下拖拽；
+update2015/10/10 修复ios上下拖拽，添加误触过滤；
 
 update2015/6/18  IE8,7滚动距离无法取值；
 
