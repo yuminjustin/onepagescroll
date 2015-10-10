@@ -3,6 +3,7 @@
 		if (!opts) return false;
 		var slef = this,
 			box = $(opts.box, slef),
+			exception = opts.exception || [], //触发例外 标签名要大写 如：SAPN
 			num = box.length,
 			index = 0,
 			previndex = -1,
@@ -21,11 +22,17 @@
 				change: change //手动操作方法 需要传入要切换窗口的角标
 			};
 		opts = $.extend(originalOpts, opts);
+		exception.push("A");
 
 		function events() { //事件绑定
 			if (!milieu[0]) {
 				slef.on("touchstart", function (e) {
-					if (e.srcElement.nodeName != "A") {
+					var trigger = true,
+						target = e.srcElement;
+					for (var i = 0, l = exception.length; i < l; i++) {
+						if (target.nodeName == exception[i] || $(target).hasClass(exception[i]) || target.id == exception[i]) trigger = false;
+					}
+					if (trigger) {
 						e.preventDefault();
 						touch.sy = e.originalEvent.touches[0].pageY;
 					}
