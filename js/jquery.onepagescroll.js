@@ -31,16 +31,18 @@
 					}
 				});
 				slef.on("touchmove", function (e) {
-					var tempY = e.originalEvent.touches[0].pageY,
-						distance = tempY - touch.sy;
-					touch.my = tempY;
-					touch.distance = distance;
+					if (touch.sy) {
+						var tempY = e.originalEvent.touches[0].pageY,
+							distance = tempY - touch.sy;
+						touch.my = tempY;
+						touch.distance = distance;
+					}
 				});
 				slef.on("touchend", function (e) {
 					if (Math.abs(touch.distance) > opts.disance) {
 						if (touch.distance > 0) scroll(0);
 						else scroll(1);
-						touch.distance = 0
+						touch.sy = touch.my = touch.distance = 0
 					}
 				});
 			} else {
@@ -59,7 +61,7 @@
 					}
 				});
 			}
-			
+
 			$(window).on("touchstart", function (e) {
 				//ios修复
 			})
