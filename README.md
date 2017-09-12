@@ -7,6 +7,7 @@ update2015/6/18  IE8,7滚动距离无法取值；
 update2015/6/10  修移动端复step异常；
 
 ###配制方法（以test.html为例）
+        
         var onepage = $("#box").onepagescroll({
             box: "div",                      //窗口选择器 jq选择器 
             cycle: 0,                         //是否循环滚屏 IE9（含）以下不支持  默认循环 【可选】 
